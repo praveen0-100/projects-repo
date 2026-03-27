@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Endless Research Agent</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark">ERA</span>
+        <div>
+          <p class="eyebrow">Ideathon 2026</p>
+          <h1>Endless Research Agent</h1>
+        </div>
+      </div>
+      <nav class="topnav">
+        <a href="#simulator">Simulator</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#use-cases">Use Cases</a>
+        <a href="#roadmap">Roadmap</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero panel">
+        <div class="hero-copy">
+          <p class="eyebrow">One Prompt. Infinite Knowledge.</p>
+          <h2>An autonomous AI research system that never stops learning.</h2>
+          <p class="hero-text">
+            Search the web, read papers, scan live news, summarize findings, identify gaps, and
+            launch the next investigation loop automatically.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#simulator">Launch Demo</a>
+            <a class="button button-secondary" href="#architecture">See How It Works</a>
+          </div>
+          <ul class="stat-grid">
+            <li><strong>4</strong><span>search engines</span></li>
+            <li><strong>10</strong><span>default iterations</span></li>
+            <li><strong>0</strong><span>API cost</span></li>
+            <li><strong>100%</strong><span>local-first vision</span></li>
+          </ul>
+        </div>
+        <div class="hero-visual">
+          <div class="orb orb-a"></div>
+          <div class="orb orb-b"></div>
+          <div class="hero-card">
+            <span class="terminal-dot"></span>
+            <span class="terminal-dot"></span>
+            <span class="terminal-dot"></span>
+            <pre>
+search(topic)
+extract(source)
+summarize(content)
+discover(gaps)
+loop(next_topics)
+report(markdown)</pre>
+          </div>
+        </div>
+      </section>
+
+      <section id="simulator" class="panel simulator">
+        <div class="section-heading">
+          <p class="eyebrow">Live Demo Walkthrough</p>
+          <h3>Research Loop Simulator</h3>
+          <p>Type a topic and watch the web app replay the agent workflow from the presentation script.</p>
+        </div>
+        <div class="simulator-grid">
+          <aside class="control-panel">
+            <label for="topic">Research topic</label>
+            <input id="topic" type="text" value="AI in Healthcare">
+
+            <label for="iterations">Max iterations</label>
+            <input id="iterations" type="range" min="3" max="12" value="6">
+            <output id="iterations-value">6 loops</output>
+
+            <div class="toggle-group">
+              <label><input type="checkbox" checked data-source="DuckDuckGo"> DuckDuckGo</label>
+              <label><input type="checkbox" checked data-source="Wikipedia"> Wikipedia</label>
+              <label><input type="checkbox" checked data-source="ArXiv"> ArXiv</label>
+              <label><input type="checkbox" checked data-source="Google News"> Google News</label>
+            </div>
+
+            <button id="run-simulation" class="button button-primary">Start Autonomous Research</button>
+
+            <div class="mini-metrics">
+              <article>
+                <span>Sources scanned</span>
+                <strong id="metric-sources">0</strong>
+              </article>
+              <article>
+                <span>Summaries created</span>
+                <strong id="metric-summaries">0</strong>
+              </article>
+              <article>
+                <span>Subtopics discovered</span>
+                <strong id="metric-subtopics">0</strong>
+              </article>
+            </div>
+          </aside>
+
+          <div class="console-panel">
+            <div class="console-header">
+              <span>ENDLESS RESEARCH AGENT v1.0</span>
+              <span id="status-pill" class="status-pill">Idle</span>
+            </div>
+            <div id="console-output" class="console-output" aria-live="polite"></div>
+          </div>
+        </div>
+        <div class="report-panel">
+          <div class="report-header">
+            <div>
+              <p class="eyebrow">Generated Output</p>
+              <h4>Research Report</h4>
+            </div>
+            <div class="report-actions">
+              <button id="download-md" class="button button-secondary export-button" disabled>Download .md</button>
+              <button id="download-pdf" class="button button-secondary export-button" disabled>Download .pdf</button>
+              <button id="download-docx" class="button button-secondary export-button" disabled>Download .docx</button>
+            </div>
+          </div>
+          <pre id="report-viewer" class="report-viewer">Run the simulator to generate a research report.</pre>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="section-heading">
+          <p class="eyebrow">The Problem</p>
+          <h3>Research is slow, fragmented, and expensive.</h3>
+        </div>
+        <div class="card-grid three-up">
+          <article class="info-card">
+            <h4>Information overload</h4>
+            <p>Research topics spread across papers, news, encyclopedic context, and live web sources.</p>
+          </article>
+          <article class="info-card">
+            <h4>Shallow AI tools</h4>
+            <p>Most assistants stop after one answer instead of expanding into new unexplored subtopics.</p>
+          </article>
+          <article class="info-card">
+            <h4>Cost barrier</h4>
+            <p>Premium deep-research products are often priced beyond student teams and solo builders.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="architecture" class="panel">
+        <div class="section-heading">
+          <p class="eyebrow">System Architecture</p>
+          <h3>Modular by design</h3>
+          <p>Each module owns one job and feeds the central orchestration loop.</p>
+        </div>
+        <div class="architecture-grid">
+          <article class="stack-card accent">
+            <h4>Core Flow</h4>
+            <ol>
+              <li>Input topic</li>
+              <li>Search multiple engines</li>
+              <li>Extract full content</li>
+              <li>Summarize findings</li>
+              <li>Discover next subtopics</li>
+              <li>Compile final report</li>
+            </ol>
+          </article>
+          <article class="stack-card">
+            <h4>Backend Modules</h4>
+            <ul>
+              <li><code>main.py</code> / <code>agent.py</code></li>
+              <li><code>duckduckgo.py</code> / <code>wikipedia_search.py</code></li>
+              <li><code>arxiv_search.py</code> / <code>news_search.py</code></li>
+              <li><code>web_scraper.py</code> / <code>content_extractor.py</code></li>
+              <li><code>summarizer.py</code> / <code>subtopic_generator.py</code></li>
+              <li><code>report_generator.py</code> / <code>config.py</code></li>
+            </ul>
+          </article>
+          <article class="stack-card">
+            <h4>Technology Stack</h4>
+            <ul>
+              <li>Python 3.8+</li>
+              <li>DuckDuckGo search</li>
+              <li>Wikipedia API</li>
+              <li>ArXiv API</li>
+              <li>Google News RSS</li>
+              <li>BART-Large-CNN summarization</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="section-heading">
+          <p class="eyebrow">Key Features</p>
+          <h3>Autonomy, iteration, intelligence</h3>
+        </div>
+        <div class="card-grid">
+          <article class="feature-card">
+            <h4>Endless Loop Mode</h4>
+            <p>Raise iterations toward continuous autonomous exploration.</p>
+          </article>
+          <article class="feature-card">
+            <h4>Multi-Engine Search</h4>
+            <p>Blend current web results, background knowledge, papers, and news.</p>
+          </article>
+          <article class="feature-card">
+            <h4>AI Summarization</h4>
+            <p>Condense long source content into focused, report-ready outputs.</p>
+          </article>
+          <article class="feature-card">
+            <h4>Curiosity Engine</h4>
+            <p>Generate new research angles from observed gaps in the evidence.</p>
+          </article>
+          <article class="feature-card">
+            <h4>Auto Report Writer</h4>
+            <p>Assemble structured documents with sections, summaries, and citations.</p>
+          </article>
+          <article class="feature-card">
+            <h4>Private by Design</h4>
+            <p>Runs locally in the original concept so sensitive topics stay under user control.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="use-cases" class="panel">
+        <div class="section-heading">
+          <p class="eyebrow">Use Cases</p>
+          <h3>Who this serves</h3>
+        </div>
+        <div class="use-case-grid">
+          <article><h4>Students</h4><p>Generate literature reviews overnight and map a thesis topic across disciplines.</p></article>
+          <article><h4>Journalists</h4><p>Cross-reference live news, research, and historical context for developing stories.</p></article>
+          <article><h4>Healthcare analysts</h4><p>Track diagnostics, treatment studies, and AI ethics at the same time.</p></article>
+          <article><h4>Business teams</h4><p>Research competitors, regulation, and industry trends in one investigation run.</p></article>
+          <article><h4>Policy researchers</h4><p>Combine legislation, public signals, and academic critique into a single view.</p></article>
+          <article><h4>Founders</h4><p>Validate a market with evidence instead of a shallow one-shot summary.</p></article>
+        </div>
+      </section>
+
+      <section id="roadmap" class="panel">
+        <div class="section-heading">
+          <p class="eyebrow">Roadmap</p>
+          <h3>From local prototype to research platform</h3>
+        </div>
+        <div class="timeline">
+          <article>
+            <span>v1.0</span>
+            <h4>Core engine</h4>
+            <p>Multi-source search, summarization, and Markdown output.</p>
+          </article>
+          <article>
+            <span>v2.0</span>
+            <h4>Intelligence upgrade</h4>
+            <p>Stronger models, cross-references, and knowledge graph building.</p>
+          </article>
+          <article>
+            <span>v3.0</span>
+            <h4>Web interface</h4>
+            <p>Real-time browser UI, exports, and richer presentation output.</p>
+          </article>
+          <article>
+            <span>v4.0</span>
+            <h4>Multi-agent mode</h4>
+            <p>Specialized agents for news, academic search, and fact-checking.</p>
+          </article>
+          <article>
+            <span>v5.0</span>
+            <h4>SaaS platform</h4>
+            <p>Collaboration, API access, and hosted execution for teams.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/docx@8.5.0/build/index.iife.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js" defer></script>
+  <script src="./script.js"></script>
+</body>
+</html>

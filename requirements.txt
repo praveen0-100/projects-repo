@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+duckduckgo-search
+beautifulsoup4
+requests
+python-multipart
+# Add groq if the user decides to provide a key later
+# groq
