@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STOP WATCH</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+        rel="stylesheet">
+</head>
+<body>
+    <div class="2xl:container mx-auto">
+        <div class="mx-auto h-screen flex flex-col justify-center items-center gap-10 bg-[url(https://flocus.com/minimalist-pomodoro-timer/30613aef6daa9c55cf57.jpg)]">
+            <!-- Heading -->
+            <div class="text-[70px] font-bold font-[Poppins] text-balck">
+                <h1>STOP WATCH</h1>
+            </div>
+
+            <!-- Timer display -->
+            <div class="text-6xl font-[Poppins] w-[250px] flex justify-center items-center rounded-lg">
+                <h1 id="count" class="text-white">00:00:00</h1>
+            </div>
+
+            <!-- Buttons -->
+            <div class="flex gap-5 text-[25px] font-semibold py-5 px-2 rounded-lg">
+                <button id="startBtn" class="bg-white text-black border py-2 px-10 rounded-full hover:bg-transparent hover:text-white">Start</button>
+                <button id="timeBtn" class="bg-white text-black border py-2 px-10 rounded-full hover:bg-transparent hover:text-white">TimeOut</button>
+                <button id="stopBtn" class="bg-white text-black border py-2 px-10 rounded-full hover:bg-transparent hover:text-white">Stop</button>
+                <button id="lapBtn" class="bg-white text-black border py-2 px-10 rounded-full hover:bg-transparent hover:text-white">Lap</button>
+            </div>
+
+            <!-- Laps Section -->
+            <div class="text-center">
+                <p class="text-white font-[Poppins] text-[40px] mb-2">Laps:</p>
+                <div id="laps" class="text-white font-[Poppins] text-2xl space-y-2"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let timer;
+        let seconds = 0;
+        let minutes = 0;
+        let hours = 0;
+        let running = false;
+
+        const count = document.getElementById("count");
+        const startBtn = document.getElementById("startBtn");
+        const stopBtn = document.getElementById("stopBtn");
+        const timeBtn = document.getElementById("timeBtn");
+        const lapBtn = document.getElementById("lapBtn");
+        const laps = document.getElementById("laps");
+
+        function updateDisplay() {
+            let h = hours.toString().padStart(2, '0');
+            let m = minutes.toString().padStart(2, '0');
+            let s = seconds.toString().padStart(2, '0');
+            count.textContent = `${h}:${m}:${s}`;
+        }
+
+        function startTimer() {
+            if (!running) {
+                running = true;
+                timer = setInterval(() => {
+                    seconds++;
+                    if (seconds === 60) {
+                        seconds = 0;
+                        minutes++;
+                    }
+                    if (minutes === 60) {
+                        minutes = 0;
+                        hours++;
+                    }
+                    updateDisplay();
+                }, 1000);
+            }
+        }
+
+        function stopTimer() {
+            clearInterval(timer);
+            running = false;
+        }
+
+        function resetTimer() {
+            stopTimer();
+            seconds = 0;
+            minutes = 0;
+            hours = 0;
+            updateDisplay();
+            laps.innerHTML = ""; 
+        }
+
+        function lapTime() {
+            if (running) {
+                let lap = document.createElement("p");
+                lap.textContent = count.textContent;
+                laps.appendChild(lap);
+            }
+        }
+
+        startBtn.addEventListener("click", startTimer);
+        stopBtn.addEventListener("click", stopTimer);
+        timeBtn.addEventListener("click", resetTimer);
+        lapBtn.addEventListener("click", lapTime);
+
+        updateDisplay();
+    </script>
+</body>
+</html>
