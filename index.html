@@ -357,60 +357,129 @@
           <span class="material-icons-round">map</span> Roadmap
         </div>
         <h2 class="section__title">From Prototype to Platform</h2>
+        <p class="section__sub">Five phases of evolution — from a working local prototype to a full collaborative research platform.</p>
       </div>
-      <div class="roadmap-timeline">
-        <div class="timeline-item timeline-item--active">
-          <div class="timeline-item__marker">
-            <span class="material-icons-round">check_circle</span>
+
+      <!-- Horizontal stepper connector row -->
+      <div class="roadmap-stepper">
+        <div class="stepper-track">
+          <div class="stepper-step stepper-step--done">
+            <div class="stepper-node">
+              <span class="material-icons-round">check</span>
+            </div>
+            <span class="stepper-label">v1.0</span>
           </div>
-          <div class="timeline-item__card md-surface-1">
-            <span class="timeline-item__version">v1.0</span>
-            <h3 class="timeline-item__title">Core Engine</h3>
-            <p>Real web search, content scraping, extractive summarization, and Markdown output.</p>
+          <div class="stepper-connector stepper-connector--done"></div>
+          <div class="stepper-step stepper-step--active">
+            <div class="stepper-node">2</div>
+            <span class="stepper-label">v2.0</span>
           </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-item__marker">
-            <span class="material-icons-round">radio_button_unchecked</span>
+          <div class="stepper-connector"></div>
+          <div class="stepper-step">
+            <div class="stepper-node">3</div>
+            <span class="stepper-label">v3.0</span>
           </div>
-          <div class="timeline-item__card md-surface-1">
-            <span class="timeline-item__version">v2.0</span>
-            <h3 class="timeline-item__title">Intelligence Upgrade</h3>
-            <p>LLM-powered summarization, cross-references, and knowledge graph building.</p>
+          <div class="stepper-connector"></div>
+          <div class="stepper-step">
+            <div class="stepper-node">4</div>
+            <span class="stepper-label">v4.0</span>
           </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-item__marker">
-            <span class="material-icons-round">radio_button_unchecked</span>
-          </div>
-          <div class="timeline-item__card md-surface-1">
-            <span class="timeline-item__version">v3.0</span>
-            <h3 class="timeline-item__title">Smart Interface</h3>
-            <p>Real-time streaming UI, saved research sessions, and richer presentation output.</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-item__marker">
-            <span class="material-icons-round">radio_button_unchecked</span>
-          </div>
-          <div class="timeline-item__card md-surface-1">
-            <span class="timeline-item__version">v4.0</span>
-            <h3 class="timeline-item__title">Multi-Agent Mode</h3>
-            <p>Specialized agents for news, academic search, and automated fact-checking pipelines.</p>
+          <div class="stepper-connector"></div>
+          <div class="stepper-step">
+            <div class="stepper-node">5</div>
+            <span class="stepper-label">v5.0</span>
           </div>
         </div>
-        <div class="timeline-item">
-          <div class="timeline-item__marker">
-            <span class="material-icons-round">radio_button_unchecked</span>
+      </div>
+
+      <!-- Cards below the stepper -->
+      <div class="roadmap-cards">
+
+        <div class="roadmap-card roadmap-card--done md-surface-1">
+          <div class="roadmap-card__top">
+            <div class="roadmap-badge roadmap-badge--done">
+              <span class="material-icons-round">check_circle</span> Completed
+            </div>
+            <span class="roadmap-version">v1.0</span>
           </div>
-          <div class="timeline-item__card md-surface-1">
-            <span class="timeline-item__version">v5.0</span>
-            <h3 class="timeline-item__title">SaaS Platform</h3>
-            <p>Collaboration features, API access, and hosted cloud execution for research teams.</p>
-          </div>
+          <span class="material-icons-round roadmap-card__icon">travel_explore</span>
+          <h3 class="roadmap-card__title">Core Engine</h3>
+          <p class="roadmap-card__body">Real web search via DuckDuckGo, content scraping with BeautifulSoup, extractive summarization, and Markdown report output.</p>
+          <ul class="roadmap-card__tags">
+            <li>Web Search</li>
+            <li>Scraping</li>
+            <li>MD Export</li>
+          </ul>
         </div>
+
+        <div class="roadmap-card roadmap-card--active md-surface-1">
+          <div class="roadmap-card__top">
+            <div class="roadmap-badge roadmap-badge--active">
+              <span class="material-icons-round">engineering</span> In Progress
+            </div>
+            <span class="roadmap-version">v2.0</span>
+          </div>
+          <span class="material-icons-round roadmap-card__icon">psychology</span>
+          <h3 class="roadmap-card__title">Intelligence Upgrade</h3>
+          <p class="roadmap-card__body">LLM-powered summarization via Groq or OpenAI, cross-reference detection, and knowledge graph building from discovered entities.</p>
+          <ul class="roadmap-card__tags">
+            <li>LLM Integration</li>
+            <li>Knowledge Graph</li>
+          </ul>
+        </div>
+
+        <div class="roadmap-card md-surface-1">
+          <div class="roadmap-card__top">
+            <div class="roadmap-badge roadmap-badge--upcoming">
+              <span class="material-icons-round">schedule</span> Upcoming
+            </div>
+            <span class="roadmap-version">v3.0</span>
+          </div>
+          <span class="material-icons-round roadmap-card__icon">desktop_windows</span>
+          <h3 class="roadmap-card__title">Smart Interface</h3>
+          <p class="roadmap-card__body">Real-time streaming output, saved research sessions, citation manager, and richer visual report presentation.</p>
+          <ul class="roadmap-card__tags">
+            <li>Streaming UI</li>
+            <li>Sessions</li>
+          </ul>
+        </div>
+
+        <div class="roadmap-card md-surface-1">
+          <div class="roadmap-card__top">
+            <div class="roadmap-badge roadmap-badge--upcoming">
+              <span class="material-icons-round">schedule</span> Upcoming
+            </div>
+            <span class="roadmap-version">v4.0</span>
+          </div>
+          <span class="material-icons-round roadmap-card__icon">hub</span>
+          <h3 class="roadmap-card__title">Multi-Agent Mode</h3>
+          <p class="roadmap-card__body">Specialized parallel agents for news analysis, academic search, and fact-checking. Agents collaborate to build richer reports.</p>
+          <ul class="roadmap-card__tags">
+            <li>Multi-Agent</li>
+            <li>Fact-Check</li>
+          </ul>
+        </div>
+
+        <div class="roadmap-card md-surface-1">
+          <div class="roadmap-card__top">
+            <div class="roadmap-badge roadmap-badge--upcoming">
+              <span class="material-icons-round">schedule</span> Upcoming
+            </div>
+            <span class="roadmap-version">v5.0</span>
+          </div>
+          <span class="material-icons-round roadmap-card__icon">cloud_done</span>
+          <h3 class="roadmap-card__title">SaaS Platform</h3>
+          <p class="roadmap-card__body">Team collaboration, API access, hosted cloud execution, scheduled research jobs, and white-label reporting for enterprises.</p>
+          <ul class="roadmap-card__tags">
+            <li>Cloud</li>
+            <li>API</li>
+            <li>Teams</li>
+          </ul>
+        </div>
+
       </div>
     </section>
+
 
   </main>
 
