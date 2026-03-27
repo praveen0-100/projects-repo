@@ -3,280 +3,431 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Endless Research Agent</title>
+  <title>Endless Research Agent — AI-Powered Web Research</title>
+  <meta name="description" content="An autonomous AI research agent that searches the web, scrapes real content, and generates structured downloadable reports.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-  <div class="page-shell">
-    <header class="topbar">
+
+  <!-- ── Top App Bar ─────────────────────────────────────────────── -->
+  <header class="top-app-bar">
+    <div class="top-app-bar__inner">
       <div class="brand">
-        <span class="brand-mark">ERA</span>
-        <div>
-          <p class="eyebrow">Ideathon 2026</p>
-          <h1>Endless Research Agent</h1>
+        <div class="brand-icon">
+          <span class="material-icons-round">travel_explore</span>
+        </div>
+        <div class="brand-text">
+          <span class="brand-label">Endless Research Agent</span>
+          <span class="brand-sub">Autonomous AI Research · Ideathon 2026</span>
         </div>
       </div>
-      <nav class="topnav">
-        <a href="#simulator">Simulator</a>
-        <a href="#architecture">Architecture</a>
-        <a href="#use-cases">Use Cases</a>
-        <a href="#roadmap">Roadmap</a>
+      <nav class="top-nav">
+        <a href="#simulator" class="nav-link">
+          <span class="material-icons-round">science</span> Simulator
+        </a>
+        <a href="#features" class="nav-link">
+          <span class="material-icons-round">auto_awesome</span> Features
+        </a>
+        <a href="#use-cases" class="nav-link">
+          <span class="material-icons-round">groups</span> Use Cases
+        </a>
+        <a href="#roadmap" class="nav-link">
+          <span class="material-icons-round">map</span> Roadmap
+        </a>
       </nav>
-    </header>
+    </div>
+  </header>
 
-    <main>
-      <section class="hero panel">
-        <div class="hero-copy">
-          <p class="eyebrow">One Prompt. Infinite Knowledge.</p>
-          <h2>An autonomous AI research system that never stops learning.</h2>
-          <p class="hero-text">
-            Search the web, read papers, scan live news, summarize findings, identify gaps, and
-            launch the next investigation loop automatically.
+  <main>
+
+    <!-- ── Hero ───────────────────────────────────────────────────── -->
+    <section class="hero">
+      <div class="hero__container">
+        <div class="hero__content">
+          <div class="md-chip">
+            <span class="material-icons-round">bolt</span>
+            Real-time Web Intelligence
+          </div>
+          <h1 class="hero__headline">
+            One Prompt.<br>
+            <span class="text-primary">Infinite Knowledge.</span>
+          </h1>
+          <p class="hero__body">
+            An autonomous AI research system that searches the web, scrapes real
+            content, discovers subtopics, and compiles structured, downloadable reports.
           </p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="#simulator">Launch Demo</a>
-            <a class="button button-secondary" href="#architecture">See How It Works</a>
-          </div>
-          <ul class="stat-grid">
-            <li><strong>4</strong><span>search engines</span></li>
-            <li><strong>10</strong><span>default iterations</span></li>
-            <li><strong>0</strong><span>API cost</span></li>
-            <li><strong>100%</strong><span>local-first vision</span></li>
-          </ul>
-        </div>
-        <div class="hero-visual">
-          <div class="orb orb-a"></div>
-          <div class="orb orb-b"></div>
-          <div class="hero-card">
-            <span class="terminal-dot"></span>
-            <span class="terminal-dot"></span>
-            <span class="terminal-dot"></span>
-            <pre>
-search(topic)
-extract(source)
-summarize(content)
-discover(gaps)
-loop(next_topics)
-report(markdown)</pre>
+          <div class="hero__actions">
+            <a href="#simulator" class="md-btn md-btn--filled">
+              <span class="material-icons-round">rocket_launch</span>
+              Launch Research
+            </a>
+            <a href="#features" class="md-btn md-btn--tonal">
+              <span class="material-icons-round">info</span>
+              Learn More
+            </a>
           </div>
         </div>
-      </section>
 
-      <section id="simulator" class="panel simulator">
-        <div class="section-heading">
-          <p class="eyebrow">Live Demo Walkthrough</p>
-          <h3>Research Loop Simulator</h3>
-          <p>Type a topic and watch the web app replay the agent workflow from the presentation script.</p>
-        </div>
-        <div class="simulator-grid">
-          <aside class="control-panel">
-            <label for="topic">Research topic</label>
-            <input id="topic" type="text" value="AI in Healthcare">
-
-            <label for="iterations">Max iterations</label>
-            <input id="iterations" type="range" min="3" max="12" value="6">
-            <output id="iterations-value">6 loops</output>
-
-            <div class="toggle-group">
-              <label><input type="checkbox" checked data-source="DuckDuckGo"> DuckDuckGo</label>
-              <label><input type="checkbox" checked data-source="Wikipedia"> Wikipedia</label>
-              <label><input type="checkbox" checked data-source="ArXiv"> ArXiv</label>
-              <label><input type="checkbox" checked data-source="Google News"> Google News</label>
-            </div>
-
-            <button id="run-simulation" class="button button-primary">Start Autonomous Research</button>
-
-            <div class="mini-metrics">
-              <article>
-                <span>Sources scanned</span>
-                <strong id="metric-sources">0</strong>
-              </article>
-              <article>
-                <span>Summaries created</span>
-                <strong id="metric-summaries">0</strong>
-              </article>
-              <article>
-                <span>Subtopics discovered</span>
-                <strong id="metric-subtopics">0</strong>
-              </article>
-            </div>
-          </aside>
-
-          <div class="console-panel">
-            <div class="console-header">
-              <span>ENDLESS RESEARCH AGENT v1.0</span>
-              <span id="status-pill" class="status-pill">Idle</span>
-            </div>
-            <div id="console-output" class="console-output" aria-live="polite"></div>
+        <!-- Stat Cards -->
+        <div class="hero__stats">
+          <div class="stat-card">
+            <span class="stat-card__number">4</span>
+            <span class="stat-card__label">Search Engines</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-card__number">∞</span>
+            <span class="stat-card__label">Iterations</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-card__number">3</span>
+            <span class="stat-card__label">Export Formats</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-card__number">100%</span>
+            <span class="stat-card__label">Real Web Data</span>
           </div>
         </div>
-        <div class="report-panel">
-          <div class="report-header">
+      </div>
+
+      <!-- Floating code card -->
+      <div class="hero__visual">
+        <div class="code-card md-surface-2">
+          <div class="code-card__header">
+            <div class="code-card__dots">
+              <span></span><span></span><span></span>
+            </div>
+            <span class="code-card__title">research_agent.py</span>
+          </div>
+          <pre class="code-card__body"><span class="code-kw">def</span> <span class="code-fn">run_loop</span>(topic):
+  results = <span class="code-fn">search_web</span>(topic)
+  content = <span class="code-fn">scrape_pages</span>(results)
+  summary = <span class="code-fn">summarize</span>(content)
+  subtopics = <span class="code-fn">discover</span>(summary)
+  <span class="code-kw">for</span> sub <span class="code-kw">in</span> subtopics:
+    <span class="code-fn">run_loop</span>(sub)  <span class="code-comment"># ♾️ endless</span></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Simulator ───────────────────────────────────────────────── -->
+    <section id="simulator" class="section">
+      <div class="section__header">
+        <div class="md-chip">
+          <span class="material-icons-round">science</span> Live Demo
+        </div>
+        <h2 class="section__title">Research Loop Simulator</h2>
+        <p class="section__sub">Enter any topic. The agent searches the real web, scrapes content, and generates a downloadable report.</p>
+      </div>
+
+      <div class="simulator-layout">
+
+        <!-- Control Panel -->
+        <aside class="control-card md-surface-1">
+          <h3 class="control-card__title">
+            <span class="material-icons-round">tune</span> Research Settings
+          </h3>
+
+          <div class="md-field">
+            <label class="md-label" for="topic">Research Topic</label>
+            <div class="md-input-wrap">
+              <span class="material-icons-round md-input-icon">search</span>
+              <input id="topic" class="md-input" type="text" placeholder="e.g. AI in Healthcare" value="AI in Healthcare">
+            </div>
+          </div>
+
+          <div class="md-field">
+            <label class="md-label" for="iterations">
+              Max Pages to Analyse
+              <output id="iterations-value" class="md-output">6</output>
+            </label>
+            <input id="iterations" class="md-slider" type="range" min="3" max="12" value="6">
+          </div>
+
+          <div class="md-field">
+            <p class="md-label">Data Sources</p>
+            <div class="source-chips">
+              <label class="md-chip-toggle">
+                <input type="checkbox" checked data-source="DuckDuckGo">
+                <span class="material-icons-round">public</span> DuckDuckGo
+              </label>
+              <label class="md-chip-toggle">
+                <input type="checkbox" checked data-source="Wikipedia">
+                <span class="material-icons-round">menu_book</span> Wikipedia
+              </label>
+              <label class="md-chip-toggle">
+                <input type="checkbox" data-source="ArXiv">
+                <span class="material-icons-round">science</span> ArXiv
+              </label>
+              <label class="md-chip-toggle">
+                <input type="checkbox" data-source="Google News">
+                <span class="material-icons-round">newspaper</span> News
+              </label>
+            </div>
+          </div>
+
+          <button id="run-simulation" class="md-btn md-btn--filled md-btn--full">
+            <span class="material-icons-round">play_arrow</span>
+            Start Autonomous Research
+          </button>
+
+          <!-- Metrics -->
+          <div class="metrics-grid">
+            <div class="metric-card">
+              <span class="material-icons-round">language</span>
+              <strong id="metric-sources">0</strong>
+              <span>Sources</span>
+            </div>
+            <div class="metric-card">
+              <span class="material-icons-round">summarize</span>
+              <strong id="metric-summaries">0</strong>
+              <span>Summaries</span>
+            </div>
+            <div class="metric-card">
+              <span class="material-icons-round">fork_right</span>
+              <strong id="metric-subtopics">0</strong>
+              <span>Subtopics</span>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Console Panel -->
+        <div class="console-card md-surface-1">
+          <div class="console-card__header">
+            <div class="console-card__title-row">
+              <span class="material-icons-round">terminal</span>
+              <span>AGENT CONSOLE</span>
+            </div>
+            <span id="status-pill" class="status-pill status-pill--idle">Idle</span>
+          </div>
+          <div id="console-output" class="console-output" aria-live="polite"></div>
+        </div>
+      </div>
+
+      <!-- Report Panel -->
+      <div class="report-card md-surface-1">
+        <div class="report-card__header">
+          <div class="report-card__title-row">
+            <span class="material-icons-round">description</span>
             <div>
-              <p class="eyebrow">Generated Output</p>
-              <h4>Research Report</h4>
-            </div>
-            <div class="report-actions">
-              <button id="download-md" class="button button-secondary export-button" disabled>Download .md</button>
-              <button id="download-pdf" class="button button-secondary export-button" disabled>Download .pdf</button>
-              <button id="download-docx" class="button button-secondary export-button" disabled>Download .docx</button>
+              <p class="md-label" style="margin:0">Generated Output</p>
+              <h4 class="report-card__title">Research Report</h4>
             </div>
           </div>
-          <pre id="report-viewer" class="report-viewer">Run the simulator to generate a research report.</pre>
+          <div class="report-card__actions">
+            <button id="download-md" class="md-btn md-btn--outlined export-btn" disabled>
+              <span class="material-icons-round">article</span> Markdown
+            </button>
+            <button id="download-pdf" class="md-btn md-btn--outlined export-btn" disabled>
+              <span class="material-icons-round">picture_as_pdf</span> PDF
+            </button>
+            <button id="download-docx" class="md-btn md-btn--tonal export-btn" disabled>
+              <span class="material-icons-round">download</span> Word
+            </button>
+          </div>
         </div>
-      </section>
+        <pre id="report-viewer" class="report-viewer">Run the simulator above to generate a real-world research report.</pre>
+      </div>
+    </section>
 
-      <section class="panel">
-        <div class="section-heading">
-          <p class="eyebrow">The Problem</p>
-          <h3>Research is slow, fragmented, and expensive.</h3>
+    <!-- ── Problem Section ─────────────────────────────────────────── -->
+    <section class="section">
+      <div class="section__header">
+        <div class="md-chip">
+          <span class="material-icons-round">report_problem</span> The Problem
         </div>
-        <div class="card-grid three-up">
-          <article class="info-card">
-            <h4>Information overload</h4>
-            <p>Research topics spread across papers, news, encyclopedic context, and live web sources.</p>
-          </article>
-          <article class="info-card">
-            <h4>Shallow AI tools</h4>
-            <p>Most assistants stop after one answer instead of expanding into new unexplored subtopics.</p>
-          </article>
-          <article class="info-card">
-            <h4>Cost barrier</h4>
-            <p>Premium deep-research products are often priced beyond student teams and solo builders.</p>
-          </article>
+        <h2 class="section__title">Research is slow, fragmented, and expensive.</h2>
+      </div>
+      <div class="card-grid three-col">
+        <div class="info-card md-surface-1">
+          <div class="info-card__icon info-card__icon--primary">
+            <span class="material-icons-round">filter_drama</span>
+          </div>
+          <h3 class="info-card__title">Information Overload</h3>
+          <p class="info-card__body">Research topics spread across papers, news, encyclopedic context, and live web sources with no unified view.</p>
         </div>
-      </section>
+        <div class="info-card md-surface-1">
+          <div class="info-card__icon info-card__icon--secondary">
+            <span class="material-icons-round">psychology_alt</span>
+          </div>
+          <h3 class="info-card__title">Shallow AI Tools</h3>
+          <p class="info-card__body">Most assistants stop after one answer instead of expanding into new unexplored subtopics and related domains.</p>
+        </div>
+        <div class="info-card md-surface-1">
+          <div class="info-card__icon info-card__icon--tertiary">
+            <span class="material-icons-round">money_off</span>
+          </div>
+          <h3 class="info-card__title">Cost Barrier</h3>
+          <p class="info-card__body">Premium deep-research products are often priced beyond student teams and solo builders who need them most.</p>
+        </div>
+      </div>
+    </section>
 
-      <section id="architecture" class="panel">
-        <div class="section-heading">
-          <p class="eyebrow">System Architecture</p>
-          <h3>Modular by design</h3>
-          <p>Each module owns one job and feeds the central orchestration loop.</p>
+    <!-- ── Features ────────────────────────────────────────────────── -->
+    <section id="features" class="section">
+      <div class="section__header">
+        <div class="md-chip">
+          <span class="material-icons-round">auto_awesome</span> Key Features
         </div>
-        <div class="architecture-grid">
-          <article class="stack-card accent">
-            <h4>Core Flow</h4>
-            <ol>
-              <li>Input topic</li>
-              <li>Search multiple engines</li>
-              <li>Extract full content</li>
-              <li>Summarize findings</li>
-              <li>Discover next subtopics</li>
-              <li>Compile final report</li>
-            </ol>
-          </article>
-          <article class="stack-card">
-            <h4>Backend Modules</h4>
-            <ul>
-              <li><code>main.py</code> / <code>agent.py</code></li>
-              <li><code>duckduckgo.py</code> / <code>wikipedia_search.py</code></li>
-              <li><code>arxiv_search.py</code> / <code>news_search.py</code></li>
-              <li><code>web_scraper.py</code> / <code>content_extractor.py</code></li>
-              <li><code>summarizer.py</code> / <code>subtopic_generator.py</code></li>
-              <li><code>report_generator.py</code> / <code>config.py</code></li>
-            </ul>
-          </article>
-          <article class="stack-card">
-            <h4>Technology Stack</h4>
-            <ul>
-              <li>Python 3.8+</li>
-              <li>DuckDuckGo search</li>
-              <li>Wikipedia API</li>
-              <li>ArXiv API</li>
-              <li>Google News RSS</li>
-              <li>BART-Large-CNN summarization</li>
-            </ul>
-          </article>
+        <h2 class="section__title">Autonomy, Iteration, Intelligence</h2>
+      </div>
+      <div class="card-grid two-col">
+        <div class="feature-card md-surface-1">
+          <span class="material-icons-round feature-card__icon">all_inclusive</span>
+          <h3 class="feature-card__title">Endless Loop Mode</h3>
+          <p class="feature-card__body">Continuously discovers and explores subtopics, building a comprehensive knowledge map with every iteration.</p>
         </div>
-      </section>
+        <div class="feature-card md-surface-1">
+          <span class="material-icons-round feature-card__icon">hub</span>
+          <h3 class="feature-card__title">Multi-Engine Search</h3>
+          <p class="feature-card__body">Blend current web results with encyclopedic content, academic papers, and breaking news from multiple engines.</p>
+        </div>
+        <div class="feature-card md-surface-1">
+          <span class="material-icons-round feature-card__icon">memory</span>
+          <h3 class="feature-card__title">Real Web Scraping</h3>
+          <p class="feature-card__body">Fetches and parses actual page content from discovered URLs. No hallucinations — only real data from the web.</p>
+        </div>
+        <div class="feature-card md-surface-1">
+          <span class="material-icons-round feature-card__icon">content_paste</span>
+          <h3 class="feature-card__title">Extractive Summarization</h3>
+          <p class="feature-card__body">Condenses long source content into focused, report-ready outputs using intelligent sentence extraction.</p>
+        </div>
+        <div class="feature-card md-surface-1">
+          <span class="material-icons-round feature-card__icon">edit_document</span>
+          <h3 class="feature-card__title">Auto Report Writer</h3>
+          <p class="feature-card__body">Assembles structured documents with sections, summaries, source links, and citations automatically.</p>
+        </div>
+        <div class="feature-card md-surface-1">
+          <span class="material-icons-round feature-card__icon">download_for_offline</span>
+          <h3 class="feature-card__title">Multi-Format Export</h3>
+          <p class="feature-card__body">Download your research report as Markdown, PDF, or Word — ready to submit or share instantly.</p>
+        </div>
+      </div>
+    </section>
 
-      <section class="panel">
-        <div class="section-heading">
-          <p class="eyebrow">Key Features</p>
-          <h3>Autonomy, iteration, intelligence</h3>
+    <!-- ── Use Cases ────────────────────────────────────────────────── -->
+    <section id="use-cases" class="section">
+      <div class="section__header">
+        <div class="md-chip">
+          <span class="material-icons-round">groups</span> Use Cases
         </div>
-        <div class="card-grid">
-          <article class="feature-card">
-            <h4>Endless Loop Mode</h4>
-            <p>Raise iterations toward continuous autonomous exploration.</p>
-          </article>
-          <article class="feature-card">
-            <h4>Multi-Engine Search</h4>
-            <p>Blend current web results, background knowledge, papers, and news.</p>
-          </article>
-          <article class="feature-card">
-            <h4>AI Summarization</h4>
-            <p>Condense long source content into focused, report-ready outputs.</p>
-          </article>
-          <article class="feature-card">
-            <h4>Curiosity Engine</h4>
-            <p>Generate new research angles from observed gaps in the evidence.</p>
-          </article>
-          <article class="feature-card">
-            <h4>Auto Report Writer</h4>
-            <p>Assemble structured documents with sections, summaries, and citations.</p>
-          </article>
-          <article class="feature-card">
-            <h4>Private by Design</h4>
-            <p>Runs locally in the original concept so sensitive topics stay under user control.</p>
-          </article>
+        <h2 class="section__title">Who This Serves</h2>
+      </div>
+      <div class="card-grid three-col">
+        <div class="use-case-card md-surface-1">
+          <span class="material-icons-round use-case-card__icon">school</span>
+          <h3>Students</h3>
+          <p>Generate literature reviews overnight and map a thesis topic across all disciplines in one run.</p>
         </div>
-      </section>
+        <div class="use-case-card md-surface-1">
+          <span class="material-icons-round use-case-card__icon">newspaper</span>
+          <h3>Journalists</h3>
+          <p>Cross-reference live news, research, and historical context for developing stories in minutes.</p>
+        </div>
+        <div class="use-case-card md-surface-1">
+          <span class="material-icons-round use-case-card__icon">local_hospital</span>
+          <h3>Healthcare Analysts</h3>
+          <p>Track diagnostics, treatment studies, and AI ethics across multiple research dimensions simultaneously.</p>
+        </div>
+        <div class="use-case-card md-surface-1">
+          <span class="material-icons-round use-case-card__icon">business</span>
+          <h3>Business Teams</h3>
+          <p>Research competitors, regulation, and industry trends across the entire web in one investigation run.</p>
+        </div>
+        <div class="use-case-card md-surface-1">
+          <span class="material-icons-round use-case-card__icon">account_balance</span>
+          <h3>Policy Researchers</h3>
+          <p>Combine legislation, public signals, and academic critique into a single comprehensive view.</p>
+        </div>
+        <div class="use-case-card md-surface-1">
+          <span class="material-icons-round use-case-card__icon">rocket_launch</span>
+          <h3>Founders</h3>
+          <p>Validate a market idea with evidence from real sources instead of relying on a shallow one-shot summary.</p>
+        </div>
+      </div>
+    </section>
 
-      <section id="use-cases" class="panel">
-        <div class="section-heading">
-          <p class="eyebrow">Use Cases</p>
-          <h3>Who this serves</h3>
+    <!-- ── Roadmap ──────────────────────────────────────────────────── -->
+    <section id="roadmap" class="section">
+      <div class="section__header">
+        <div class="md-chip">
+          <span class="material-icons-round">map</span> Roadmap
         </div>
-        <div class="use-case-grid">
-          <article><h4>Students</h4><p>Generate literature reviews overnight and map a thesis topic across disciplines.</p></article>
-          <article><h4>Journalists</h4><p>Cross-reference live news, research, and historical context for developing stories.</p></article>
-          <article><h4>Healthcare analysts</h4><p>Track diagnostics, treatment studies, and AI ethics at the same time.</p></article>
-          <article><h4>Business teams</h4><p>Research competitors, regulation, and industry trends in one investigation run.</p></article>
-          <article><h4>Policy researchers</h4><p>Combine legislation, public signals, and academic critique into a single view.</p></article>
-          <article><h4>Founders</h4><p>Validate a market with evidence instead of a shallow one-shot summary.</p></article>
+        <h2 class="section__title">From Prototype to Platform</h2>
+      </div>
+      <div class="roadmap-timeline">
+        <div class="timeline-item timeline-item--active">
+          <div class="timeline-item__marker">
+            <span class="material-icons-round">check_circle</span>
+          </div>
+          <div class="timeline-item__card md-surface-1">
+            <span class="timeline-item__version">v1.0</span>
+            <h3 class="timeline-item__title">Core Engine</h3>
+            <p>Real web search, content scraping, extractive summarization, and Markdown output.</p>
+          </div>
         </div>
-      </section>
+        <div class="timeline-item">
+          <div class="timeline-item__marker">
+            <span class="material-icons-round">radio_button_unchecked</span>
+          </div>
+          <div class="timeline-item__card md-surface-1">
+            <span class="timeline-item__version">v2.0</span>
+            <h3 class="timeline-item__title">Intelligence Upgrade</h3>
+            <p>LLM-powered summarization, cross-references, and knowledge graph building.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-item__marker">
+            <span class="material-icons-round">radio_button_unchecked</span>
+          </div>
+          <div class="timeline-item__card md-surface-1">
+            <span class="timeline-item__version">v3.0</span>
+            <h3 class="timeline-item__title">Smart Interface</h3>
+            <p>Real-time streaming UI, saved research sessions, and richer presentation output.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-item__marker">
+            <span class="material-icons-round">radio_button_unchecked</span>
+          </div>
+          <div class="timeline-item__card md-surface-1">
+            <span class="timeline-item__version">v4.0</span>
+            <h3 class="timeline-item__title">Multi-Agent Mode</h3>
+            <p>Specialized agents for news, academic search, and automated fact-checking pipelines.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-item__marker">
+            <span class="material-icons-round">radio_button_unchecked</span>
+          </div>
+          <div class="timeline-item__card md-surface-1">
+            <span class="timeline-item__version">v5.0</span>
+            <h3 class="timeline-item__title">SaaS Platform</h3>
+            <p>Collaboration features, API access, and hosted cloud execution for research teams.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-      <section id="roadmap" class="panel">
-        <div class="section-heading">
-          <p class="eyebrow">Roadmap</p>
-          <h3>From local prototype to research platform</h3>
-        </div>
-        <div class="timeline">
-          <article>
-            <span>v1.0</span>
-            <h4>Core engine</h4>
-            <p>Multi-source search, summarization, and Markdown output.</p>
-          </article>
-          <article>
-            <span>v2.0</span>
-            <h4>Intelligence upgrade</h4>
-            <p>Stronger models, cross-references, and knowledge graph building.</p>
-          </article>
-          <article>
-            <span>v3.0</span>
-            <h4>Web interface</h4>
-            <p>Real-time browser UI, exports, and richer presentation output.</p>
-          </article>
-          <article>
-            <span>v4.0</span>
-            <h4>Multi-agent mode</h4>
-            <p>Specialized agents for news, academic search, and fact-checking.</p>
-          </article>
-          <article>
-            <span>v5.0</span>
-            <h4>SaaS platform</h4>
-            <p>Collaboration, API access, and hosted execution for teams.</p>
-          </article>
-        </div>
-      </section>
-    </main>
-  </div>
+  </main>
 
+  <!-- ── Footer ──────────────────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="brand brand--footer">
+        <div class="brand-icon brand-icon--sm">
+          <span class="material-icons-round">travel_explore</span>
+        </div>
+        <span class="brand-label">Endless Research Agent</span>
+      </div>
+      <p class="footer__copy">Built for Ideathon 2026 · Fetches real-world data · Exports to MD, PDF, DOCX</p>
+    </div>
+  </footer>
+
+  <!-- CDN: jsPDF, docx, FileSaver -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/docx@8.5.0/build/index.iife.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js" defer></script>

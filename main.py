@@ -1,45 +1,53 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from researcher import Researcher
 from pydantic import BaseModel
-from typing import List, Optional
+from typing import List
+from researcher import Researcher
 
-app = FastAPI()
+app = FastAPI(title="Endless Research Agent API")
 
-# Enable CORS for local development
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
-    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
 researcher = Researcher()
 
+
 class ResearchRequest(BaseModel):
     topic: str
     iterations: int = 3
     sources: List[str] = ["DuckDuckGo", "Wikipedia"]
 
+
 @app.get("/")
-def read_root():
-    return {"message": "Endless Research Agent API is running."}
+def root():
+    return {"status": "Endless Research Agent API running"}
+
 
 @app.post("/research")
-async def research(req: ResearchRequest):
-    """Perform actual research by searching and scraping."""
-    # To simulate iterations, for now we can call once and return more results, 
-    # or loop and fetch more topics based on findings. 
-    # For a start, let's fetch results related to the topic.
-    
-    results = researcher.research_topic(req.topic, sources=req.sources)
+def do_research(req: ResearchRequest):
+    """
+    Performs live web research:
+      1. Searches DuckDuckGo for the topic
+      2. Scrapes each result page for real content
+      3. Extracts a summary from the scraped text
+      4. Returns all data to the frontend
+    """
+    results = researcher.research(
+        topic=req.topic,
+        sources=req.sources,
+        max_results=max(req.iterations, 3),
+    )
     return {
         "topic": req.topic,
-        "iterations": req.iterations,
+        "sources_used": req.sources,
+        "total": len(results),
         "results": results,
-        "summary": "Synthesized results from real-world search and content extraction."
     }
+
 
 if __name__ == "__main__":
     import uvicorn

@@ -1,8 +1,7 @@
 fastapi
 uvicorn
-duckduckgo-search
+ddgs
 beautifulsoup4
 requests
+lxml
 python-multipart
-# Add groq if the user decides to provide a key later
-# groq

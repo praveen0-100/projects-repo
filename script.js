@@ -61,7 +61,12 @@ function getSelectedSources() {
 
 function updateStatus(text) {
   statusPill.textContent = text;
+  statusPill.className = "status-pill";
+  if (text === "Running")  statusPill.classList.add("status-running");
+  if (text === "Complete") statusPill.classList.add("status-complete");
+  if (text === "Error")    statusPill.classList.add("status-error");
 }
+
 
 function toggleExportButtons(enabled) {
   downloadMdButton.disabled = !enabled;
